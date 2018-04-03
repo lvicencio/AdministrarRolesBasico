@@ -1,0 +1,17 @@
+﻿
+@{
+    ViewBag.Title = "Editor";
+}
+
+
+
+<div class="row">
+    <p>
+        @if (User.Identity.IsAuthenticated)
+        {
+            <h1>Bienvenido Usuario @(User.Identity.IsAuthenticated ? HttpContext.Current.User.Identity.Name : "Invitado" ) </h1>
+            <a href="@Url.Action("LogOut","Home")">Cerrar Sessión</a>
+        }
+    </p>
+    <h2>Hola Editor</h2>
+</div>

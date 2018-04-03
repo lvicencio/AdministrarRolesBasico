@@ -10,12 +10,21 @@ namespace AdministrarRolesBasico.Controllers
 {
     public class HomeController : Controller
     {
-        [Authorize(Roles="Admin")]
+        [Authorize]
         public ActionResult Index()
         {
             return View();
         }
-
+        [Authorize(Roles="Admin")]
+        public ActionResult Administrador()
+        {
+            return View();
+        }
+        [Authorize(Roles="Editor")]
+        public ActionResult Editor()
+        {
+            return View();
+        }
         public ActionResult Login()
         {
             return View();
@@ -40,7 +49,21 @@ namespace AdministrarRolesBasico.Controllers
                 }
                 else
                 {
-                    return RedirectToAction("Index");
+                    switch (dataItem.Role)
+                    {
+                       case "Admin":
+                            return RedirectToAction("Administrador");
+                            break;
+                        case "Editor":
+                            return RedirectToAction("Editor");
+                            break;
+                       default:
+                            return RedirectToAction("Index");
+                            break;
+                    }
+
+
+                   return RedirectToAction("Index");
                 }
             }
             else

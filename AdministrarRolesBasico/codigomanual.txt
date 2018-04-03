@@ -1,0 +1,39 @@
+﻿netRolEntities
+
+Login
+
+   public ActionResult Login(Usuarios model, string returnUrl)
+        {
+            netRolEntities db = new netRolEntities();
+
+            var dataItem = db.Usuarios.Where(x => x.Username == model.Username && x.Password == model.Password).First();
+
+            if (dataItem != null)
+            {
+                FormsAuthentication.SetAuthCookie(dataItem.Username, false);
+                if (Url.IsLocalUrl(returnUrl) && returnUrl.Length > 1 &&returnUrl.StartsWith("/") 
+                    && !returnUrl.StartsWith("//") 
+                    && !returnUrl.StartsWith("/\\"))
+                {
+                    return Redirect(returnUrl);
+                }
+                else
+                {
+                    return RedirectToAction("Index");
+                }
+            }
+            else
+            {
+                ModelState.AddModelError("", "Usuario/Contraseña no es Valido");
+                return View();
+            }
+           
+        }
+
+*****************Web.config****************************
+
+Agregar en <system.web>
+
+ <authentication mode="Forms">
+      <forms loginUrl="~/Home/Login" defaultUrl="~/" timeout="20" slidingExpiration="true" />
+    </authentication>

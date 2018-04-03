@@ -59,6 +59,5 @@ E:\proyectos_C#\AdministrarRolesBasico\AdministrarRolesBasico\bin\es\System.Web.
 E:\proyectos_C#\AdministrarRolesBasico\AdministrarRolesBasico\bin\es\System.Web.WebPages.resources.dll
 E:\proyectos_C#\AdministrarRolesBasico\AdministrarRolesBasico\bin\es\System.Web.WebPages.Deployment.resources.dll
 E:\proyectos_C#\AdministrarRolesBasico\AdministrarRolesBasico\bin\es\System.Web.WebPages.Razor.resources.dll
-E:\proyectos_C#\AdministrarRolesBasico\AdministrarRolesBasico\obj\Debug\AdministrarRolesBasico.csprojResolveAssemblyReference.cache
 E:\proyectos_C#\AdministrarRolesBasico\AdministrarRolesBasico\obj\Debug\AdministrarRolesBasico.dll
 E:\proyectos_C#\AdministrarRolesBasico\AdministrarRolesBasico\obj\Debug\AdministrarRolesBasico.pdb

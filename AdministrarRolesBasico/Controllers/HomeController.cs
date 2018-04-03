@@ -10,7 +10,7 @@ namespace AdministrarRolesBasico.Controllers
 {
     public class HomeController : Controller
     {
-        [Authorize]
+        [Authorize(Roles="Admin")]
         public ActionResult Index()
         {
             return View();
@@ -31,7 +31,7 @@ namespace AdministrarRolesBasico.Controllers
 
             if (dataItem != null)
             {
-                FormsAuthentication.SetAuthCookie(dataItem.FullName, false);
+                FormsAuthentication.SetAuthCookie(dataItem.Username, false);
                 if (Url.IsLocalUrl(returnUrl) && returnUrl.Length > 1 && returnUrl.StartsWith("/")
                     && !returnUrl.StartsWith("//")
                     && !returnUrl.StartsWith("/\\"))

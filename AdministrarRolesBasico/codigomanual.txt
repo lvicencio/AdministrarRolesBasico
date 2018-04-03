@@ -71,4 +71,21 @@ Agregar en <system.web>
     </roleManager>
 
 	AdministrarRolesBasico.MyRoleProvider.SitioRoles = lugar donde esta la clase que maneja los roles
-********
+***
+Clase que manega y heredera el RoleProvider
+
+*la clase hay que implementar la abstraccion (control+ .)
+
+ public class SitioRoles : RoleProvider
+    {
+       
+	    public override string[] GetRolesForUser(string username)
+        {
+            netRolEntities db = new netRolEntities();
+            string data = db.Usuarios.Where(x => x.Username == username).FirstOrDefault().Role;
+            string[] result = { data };
+            return result;
+        }
+
+       
+    }

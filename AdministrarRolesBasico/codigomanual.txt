@@ -29,7 +29,13 @@ Login
             }
            
         }
-
+		****************************
+		Cerrar Session
+		  public  ActionResult LogOut()
+        {
+            FormsAuthentication.SignOut();
+            return RedirectToAction("Index", "Home");
+        }
 *****************Web.config****************************
 
 Agregar en <system.web>
@@ -37,3 +43,32 @@ Agregar en <system.web>
  <authentication mode="Forms">
       <forms loginUrl="~/Home/Login" defaultUrl="~/" timeout="20" slidingExpiration="true" />
     </authentication>
+
+
+*******Vista Login********************
+
+@using (Html.BeginForm("Login","Home" , new { returnUrl = Request.QueryString["ReturnUrl"]}, FormMethod.Post))
+
+
+********Vista para Identicar a usuario registrado*********************
+
+ @if (User.Identity.IsAuthenticated)
+        {
+            <h1>Bienvenido usuario @(User.Identity.IsAuthenticated ?  HttpContext.Current.User.Identity.Name : "Invitado" ) </h1>
+        }
+
+***************Manegar Roles*************************
+
+Web.config  
+
+Agregar en <system.web>
+
+    <roleManager enabled="true" defaultProvider="MyProvider">
+      <providers>
+        <clear/>
+        <add name="MyProvider" type="AdministrarRolesBasico.MyRoleProvider.SitioRoles"/>
+      </providers>
+    </roleManager>
+
+	AdministrarRolesBasico.MyRoleProvider.SitioRoles = lugar donde esta la clase que maneja los roles
+********
